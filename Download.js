@@ -11,35 +11,36 @@ function getOS() {
   return "Unknown";
 }
 
-
-
-// Функция, которая запускает скачивание файла
+ 
 function startDownload() {
   const link = document.createElement('a');
+  
+  // Автоматически определяем базовый путь сайта (например, "/VSQtools-site/")
+  // Если сайт в корне домена, это будет просто "/"
+  const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
 
   if (getOS() == "Linux") {
-    // Используем корневой путь (начинается со слеша /)
-    link.href = '/linux___CLICK_TO_OPEN'; // Убедись, что имя файла и папки совпадает с тем, что в проводнике
+    link.href = basePath + 'linux___CLICK_TO_OPEN';
     link.download = 'linux___CLICK_TO_OPEN';
 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  }else if (getOS() == "Windows") {
-    // Используем корневой путь (начинается со слеша /)
-    link.href = '/Windows.exe'; // Убедись, что имя файла и папки совпадает с тем, что в проводнике
+  } else if (getOS() == "Windows") {
+    link.href = basePath + 'Windows.exe';
     link.download = 'Windows.exe';
 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  }else{
+  } else {
     Swal.fire({
-    title: "Извините, но пока мы не поддерживаем систему "  + getOS(),
-    icon: "success",
-    background: '#181818',
-    color: '#fff'
-  });
+      title: "Извините, но пока мы не поддерживаем систему " + getOS(),
+      icon: "success",
+      background: '#181818',
+      color: '#fff'
+    });
+    return;
   }
 
   Swal.fire({
@@ -48,7 +49,6 @@ function startDownload() {
     background: '#181818',
     color: '#fff'
   });
-
 }
 
 
