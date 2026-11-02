@@ -11,7 +11,7 @@ function getOS() {
   return "Unknown";
 }
 
- 
+
 function startDownload() {
   const link = document.createElement('a');
   
