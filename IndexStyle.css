@@ -125,6 +125,9 @@ button:active{
 .ADD_box1{
     width: 70%;
     height: 235px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
 }
